@@ -5,6 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>茶语数字博物馆 - 茶艺馆</title>
     <link rel="stylesheet" href="css/main.css" type="text/css">
+    <style>
+        /* 核心：让容器完全贴合地图图片，作为定位基准 */
+        .china-map-wrapper {
+            width: 100%;
+            max-width: 900px; /* 地图最大宽度 */
+            margin: 20px auto;
+        }
+        .china-map {
+            position: relative; /* 唯一的定位参考容器 */
+            width: 100%;
+            /* 关键：匹配中国地图的宽高比（常见地图比例 900:600 = 3:2） */
+            aspect-ratio: 3 / 2; 
+            background-image: url('https://pic.rmb.bdstatic.com/bjh/events/4eb951d35e9cb9c0d2e86a5a810876855343.jpeg@h_1280');
+            background-size: contain; /* 保持图片比例，不拉伸 */
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        /* 省份按钮：使用百分比定位（核心！），基于地图图片容器 */
+        .region {
+            position: absolute; /* 仅相对于父容器.china-map定位 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #8B4513;
+            z-index: 5;
+            /* 固定按钮尺寸，不随容器缩放 */
+            width: 65px;
+            height: 65px;
+        }
+        /* 云南按钮：百分比定位 - 贴合地图上云南位置 */
+        .region.yunnan {
+            top: 62%;    /* 距离容器顶部42% */
+            left: 35%;   /* 距离容器左侧35% */
+            width: 90px;
+            height: 90px;
+        }
+        /* 浙江按钮：百分比定位 - 贴合地图上浙江位置 */
+        .region.zhejiang {
+            top: 28%;    /* 距离容器顶部28% */
+            left: 75%;   /* 距离容器左侧75% */
+        }
+        /* 安徽按钮：百分比定位 - 贴合地图上安徽位置 */
+        .region.anhui {
+            top: 52%;    /* 距离容器顶部32% */
+            left: 62%;   /* 距离容器左侧68% */
+        }
+        /* 悬浮效果保留 */
+        .region:hover {
+            background-color: rgba(205, 133, 63, 0.9);
+            color: white;
+            transform: scale(1.1);
+        }
+        .region-details {
+            display: none;
+            position: absolute;
+            top: -110px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 220px;
+            padding: 12px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10;
+            font-size: 14px;
+        }
+        .region:hover .region-details {
+            display: block;
+        }
+        .region-details h3 {
+            margin: 0 0 8px 0;
+            color: #8B4513;
+            font-size: 16px;
+        }
+        .region-details p {
+            margin: 0 0 8px 0;
+            color: #666;
+        }
+        .region-details span {
+            color: #8B4513;
+            font-size: 13px;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -22,43 +114,39 @@
         </div>
 
         <div class="detail-container">
-            <!-- 茶艺馆主图（自适应不同尺寸） -->
-            <div class="img-box">
-                <img src="https://pic.rmb.bdstatic.com/bjh/events/4eb951d35e9cb9c0d2e86a5a810876855343.jpeg@h_1280" alt="中国茶产区地图">
-            </div>
-            
             <p>点击地图上的标记，了解各地特色茶类及茶艺文化：</p>
             
-            <div class="china-map">
-                <!-- 浙江：跳转zhejiang-detail.html -->
-                <a href="zhejiang-detail.html" class="region" style="width: 70px; height: 70px; top: 150px; left: 520px;">
-                    浙江
-                    <div class="region-details">
-                        <h3>浙江</h3>
-                        <p>著名茶类：龙井茶、安吉白茶、径山茶</p>
-                        <span>查看详情</span>
-                    </div>
-                </a>
-                <!-- 云南：跳转yunnan-detail.html -->
-                <a href="yunnan-detail.html" class="region" style="width: 90px; height: 90px; top: 220px; left: 280px;">
-                    云南
-                    <div class="region-details">
-                        <h3>云南</h3>
-                        <p>著名茶类：普洱茶、滇红、月光白</p>
-                        <span>查看详情</span>
-                    </div>
-                </a>
-                <!-- 安徽：跳转anhui-detail.html -->
-                <a href="anhui-detail.html" class="region" style="width: 70px; height: 70px; top: 170px; left: 480px;">
-                    安徽
-                    <div class="region-details">
-                        <h3>安徽</h3>
-                        <p>著名茶类：黄山毛峰、祁门红茶、六安瓜片</p>
-                        <span>查看详情</span>
-                    </div>
-                </a>
+            <div class="china-map-wrapper">
+                <div class="china-map">
+                    <!-- 浙江按钮：基于图片百分比定位 -->
+                    <a href="zhejiang-detail.html" class="region zhejiang">
+                        浙江
+                        <div class="region-details">
+                            <h3>浙江</h3>
+                            <p>著名茶类：龙井茶、安吉白茶、径山茶</p>
+                            <span>查看详情</span>
+                        </div>
+                    </a>
+                    <!-- 云南按钮：基于图片百分比定位 -->
+                    <a href="yunnan-detail.html" class="region yunnan">
+                        云南
+                        <div class="region-details">
+                            <h3>云南</h3>
+                            <p>著名茶类：普洱茶、滇红、月光白</p>
+                            <span>查看详情</span>
+                        </div>
+                    </a>
+                    <!-- 安徽按钮：基于图片百分比定位 -->
+                    <a href="anhui-detail.html" class="region anhui">
+                        安徽
+                        <div class="region-details">
+                            <h3>安徽</h3>
+                            <p>著名茶类：黄山毛峰、祁门红茶、六安瓜片</p>
+                            <span>查看详情</span>
+                        </div>
+                    </a>
+                </div>
             </div>
-          
         </div>
     </div>
 </body>
