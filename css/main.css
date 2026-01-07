@@ -170,7 +170,7 @@ h1 {
 
 .video-box iframe {
     width: 100%;
-    min-height: 300px; /* 最小高度保证显示，可随视频比例调整 */
+    min-height: 450px; /* 最小高度保证显示，可随视频比例调整 */
     border: none;
 }
 
@@ -457,6 +457,7 @@ h1 {
         min-height: 200px;
     }
 }
+
 /* 朝代详情页模块导航样式 */
 .detail-nav {
     display: flex;
