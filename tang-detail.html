@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>唐代茶俗 - 茶语数字博物馆</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>唐代茶俗</h1>
+            <p class="subtitle">陆羽茶经，煎茶风雅</p>
+            <a href="tea-custom.html" class="back-btn">返回茶俗馆</a>
+        </header>
+
+        <!-- 全局导航：仅保留首页、茶俗馆、茶艺馆，剔除无关项 -->
+        <div class="nav">
+            <ul>
+                <li><a href="tea-custom.html">茶俗馆</a></li>
+                <li><a href="tea-map.html">茶艺馆</a></li>
+            </ul>
+        </div>
+
+        <div class="detail-container">
+            <!-- 唐代茶俗专属模块导航：仅保留「茶俗场景」「茶事溯源」 -->
+            <div class="detail-nav">
+                <button class="nav-item active" data-target="custom-scene">茶俗场景</button>
+                <button class="nav-item" data-target="tea-origin">茶事溯源</button>
+            </div>
+            
+            <!-- 茶俗场景模块：整合「煎茶之法」 -->
+            <div id="custom-scene" class="content-section active">
+                <h2>唐代茶俗核心场景</h2>
+                <!-- 唐代煎茶图（自适应尺寸） -->
+                <div class="img-box">
+                    <img src="https://img0.baidu.com/it/u=3311544612,2491318948&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=625" alt="唐代煎茶场景">
+                </div>
+                
+                <p>唐代是茶文化的成型期，茶从药用、食用转为饮用，煎茶法是核心饮茶方式，陆羽《茶经》系统总结了煎茶的流程与礼仪。</p>
+                
+                <!-- 煎茶之法归到茶俗场景下 -->
+                <h3>煎茶之法（唐代核心茶俗）</h3>
+                <div class="brewing-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>备器</h4>
+                            <p>准备风炉、鍑（煎茶锅）、茶匙、茶筅等专属茶具。</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>炙茶</h4>
+                            <p>将茶饼炙烤至外焦内润，去除水分与杂味。</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>碾茶</h4>
+                            <p>将炙好的茶饼碾成细末，过筛后备用。</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>煎水</h4>
+                            <p>鍑中加水，待水沸至“鱼目微鸣”时投茶末。</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>煎茶</h4>
+                            <p>茶末入锅后搅拌，待茶汤起泡如“枣花漂漂然”即可分饮。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <p>唐代煎茶讲究“三沸”：一沸加盐调味，二沸投茶末，三沸则茶汤老，不可饮用。《茶经》中记载的煎茶法，是唐代文人雅士的标配茶俗。</p>
+                </div>
+            </div>
+            
+            <!-- 茶事溯源模块 -->
+            <div id="tea-origin" class="content-section">
+                <h2>唐代茶事溯源</h2>
+                <!-- 唐代茶经相关图 -->
+                
+                <h3>茶文化成型背景</h3>
+                <p>唐代国力强盛，交通发达，茶叶生产规模扩大，南方茶区的茶叶通过大运河运往北方；同时佛教兴盛，僧人坐禅饮茶提神，推动了茶文化的普及。</p>
+                
+                <h3>陆羽与《茶经》</h3>
+                <p>陆羽（733-804）耗时二十余年著成《茶经》，分上、中、下三卷，共十章，系统论述了茶的起源、制作、饮用、茶具等，被尊为“茶圣”。</p>
+                
+                <h3>唐代茶俗的传播</h3>
+                <p>唐代茶俗不仅在国内盛行，还通过遣唐使传入日本，成为日本茶道的源头；同时陆上丝绸之路也将中国茶叶运往西域、中亚地区。</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 模块切换脚本 -->
+    <script>
+        // 获取所有模块导航按钮和内容区域
+        const navItems = document.querySelectorAll('.nav-item');
+        const contentSections = document.querySelectorAll('.content-section');
+        
+        // 为每个按钮绑定点击事件
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // 移除所有按钮的active类
+                navItems.forEach(btn => btn.classList.remove('active'));
+                // 给当前点击的按钮添加active类
+                item.classList.add('active');
+                
+                // 获取目标模块ID
+                const targetId = item.getAttribute('data-target');
+                // 隐藏所有内容区域
+                contentSections.forEach(section => section.classList.remove('active'));
+                // 显示目标内容区域
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

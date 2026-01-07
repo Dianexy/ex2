@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶语数字博物馆 - 茶艺馆</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>中国茶产分布互动地图</h1>
+            <p class="subtitle">点击地图标记，探索各地特色茶类</p>
+            <a href="index.html" class="back-btn">返回首页</a>
+        </header>
+
+        <div class="nav">
+            <ul>
+                <li><a href="tea-custom.html">茶俗馆</a></li>
+                <li><a href="tea-map.html" class="active">茶艺馆</a></li>
+            </ul>
+        </div>
+
+        <div class="detail-container">
+            <!-- 茶艺馆主图（自适应不同尺寸） -->
+            <div class="img-box">
+                <img src="https://pic.rmb.bdstatic.com/bjh/events/4eb951d35e9cb9c0d2e86a5a810876855343.jpeg@h_1280" alt="中国茶产区地图">
+            </div>
+            
+            <p>点击地图上的标记，了解各地特色茶类及茶艺文化：</p>
+            
+            <div class="china-map">
+                <!-- 浙江：跳转zhejiang-detail.html -->
+                <a href="zhejiang-detail.html" class="region" style="width: 70px; height: 70px; top: 150px; left: 520px;">
+                    浙江
+                    <div class="region-details">
+                        <h3>浙江</h3>
+                        <p>著名茶类：龙井茶、安吉白茶、径山茶</p>
+                        <span>查看详情</span>
+                    </div>
+                </a>
+                <!-- 云南：跳转yunnan-detail.html -->
+                <a href="yunnan-detail.html" class="region" style="width: 90px; height: 90px; top: 220px; left: 280px;">
+                    云南
+                    <div class="region-details">
+                        <h3>云南</h3>
+                        <p>著名茶类：普洱茶、滇红、月光白</p>
+                        <span>查看详情</span>
+                    </div>
+                </a>
+                <!-- 安徽：跳转anhui-detail.html -->
+                <a href="anhui-detail.html" class="region" style="width: 70px; height: 70px; top: 170px; left: 480px;">
+                    安徽
+                    <div class="region-details">
+                        <h3>安徽</h3>
+                        <p>著名茶类：黄山毛峰、祁门红茶、六安瓜片</p>
+                        <span>查看详情</span>
+                    </div>
+                </a>
+            </div>
+          
+        </div>
+    </div>
+</body>
+</html>
